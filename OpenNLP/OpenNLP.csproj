@@ -4,6 +4,14 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <RepositoryUrl>https://github.com/karanbajaj/OpenNlp.git</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <Authors>Karan Bajaj</Authors>
+    <AssemblyVersion>1.0.0.3</AssemblyVersion>
+    <Version>$(AssemblyVersion)</Version>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,14 +30,26 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SharpEntropy\SharpEntropy.csproj" />
-    <ProjectReference Include="..\SharpWordNet\SharpWordNet.csproj" />
+    <ProjectReference Include="..\SharpEntropy\SharpEntropy.csproj">
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <IncludeAssets>SharpEntropy.dll</IncludeAssets>
+     
+    </ProjectReference>
+    <ProjectReference Include="..\SharpWordNet\SharpWordNet.csproj">
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <IncludeAssets>SharpWordNet.dll</IncludeAssets>
+    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Tools\Parser\Common\" />
     <Folder Include="Tools\Parser\LexParser\" />
   </ItemGroup>
- 
+  
+  <Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+    </ItemGroup>
+  </Target>
 
 </Project>
