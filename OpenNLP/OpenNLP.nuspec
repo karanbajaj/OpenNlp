@@ -3,13 +3,14 @@
   <metadata>
     <id>OpenNLP</id>
     <version>1.3.5</version>
-    <authors>AlexPoint</authors>
-    <owners>AlexPoint</owners>
-    <projectUrl>https://github.com/AlexPoint/OpenNlp</projectUrl>
+    <authors>KaranBajaj</authors>
+    <owners>KaranBajaj</owners>
+    <projectUrl>https://github.com/karanbajaj/OpenNlp</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>C# port of the Java OpenNLP tools retrieved from http://sharpnlp.codeplex.com/ (it's not mine!)</description>
     <releaseNotes>Add FileStream method</releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>NLP Natural Language Processing</tags>
+    <repository type="git" url="https://github.com/karanbajaj/OpenNlp.git "></repository>
   </metadata>
 </package>
