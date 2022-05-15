@@ -255,7 +255,27 @@ namespace OpenNLP.Tools.Coreference.Mention
             //    return null;
             //}
 		}
-		
+
+        public string[] GetLemmas(string word, string partOfSpeech)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetSenseKey(string lemma, string partOfSpeech, int senseNumber)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetSenseCount(string lemma, string partOfSpeech)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string[] GetParentSenseKeys(string lemma, string partOfSpeech, int senseNumber)
+        {
+            throw new NotImplementedException();
+        }
+
         //[STAThread]
         //public static void  Main(string[] args)
         //{
@@ -278,5 +298,5 @@ namespace OpenNLP.Tools.Coreference.Mention
         //        }
         //    }
         //}
-	}
+    }
 }

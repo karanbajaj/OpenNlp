@@ -234,11 +234,11 @@ namespace OpenNLP.Tools.Util.Process
    No longer %standalone.  See WhitespaceTokenizer for a main method.
  */
 
-  public WhitespaceLexer(TextReader r, LexedTokenFactory<object> tf):this(r){
+  public WhitespaceLexer(TextReader r, ILexedTokenFactory<object> tf):this(r){
     this.tokenFactory = tf;
   }
 
-  private LexedTokenFactory<object> tokenFactory;
+  private ILexedTokenFactory<object> tokenFactory;
 
   public static readonly String NEWLINE = "\n";
 

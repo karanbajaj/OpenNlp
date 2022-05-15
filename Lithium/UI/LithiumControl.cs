@@ -86,7 +86,7 @@ namespace Netron.Lithium
 		/// <summary>
 		/// the context menu of the control
 		/// </summary>
-		protected ContextMenu menu;
+		protected ContextMenuStrip menu;
 		/// <summary>
 		/// A simple, general purpose random generator
 		/// </summary>
@@ -247,9 +247,9 @@ namespace Netron.Lithium
 			AddRoot(defaultRootName);
 
 			//default menu, can be overwritten in the design of the application
-			menu = new ContextMenu();
+			menu = new ContextMenuStrip();
 			BuildMenu();
-			this.ContextMenu = menu;
+			this.ContextMenuStrip = menu;
 
 			//init the randomizer
 			rnd = new Random();
@@ -289,29 +289,33 @@ namespace Netron.Lithium
 		/// </summary>
 		private void BuildMenu()
 		{
-			MenuItem mnuDelete = new MenuItem("Delete",new EventHandler(OnDelete));
-			menu.MenuItems.Add(mnuDelete);
+			//ToolStrip ts = new ToolStrip();
+			var mnuDelete = new ToolStripMenuItem("Delete",null,new EventHandler(OnDelete));
+			menu.Items.Add(mnuDelete);
 			
-			MenuItem mnuProps = new MenuItem("Properties", new EventHandler(OnProps));
-			menu.MenuItems.Add(mnuProps);
+			var mnuProps = new ToolStripMenuItem("Properties",null, new EventHandler(OnProps));
+			menu.Items.Add(mnuProps);
 
-			MenuItem mnuDash = new MenuItem("-");
-			menu.MenuItems.Add(mnuDash);			
+			var mnuDash = new ToolStripMenuItem("-");
+			menu.Items.Add(mnuDash);			
 
-			MenuItem mnuShapes = new MenuItem("Change to");
-			menu.MenuItems.Add(mnuShapes);
+			var mnuShapesButton = new ToolStripDropDownButton("Change to");
 
-			MenuItem mnuRecShape = new MenuItem("Rectangular shape", new EventHandler(OnRecShape));
-			mnuShapes.MenuItems.Add(mnuRecShape);
+			var mnuShapes = new ToolStripDropDown();
+			var mnuRecShape = new ToolStripMenuItem("Rectangular shape", null,new EventHandler(OnRecShape));
+			mnuShapes.Items.Add(mnuRecShape);
 			
-			MenuItem mnuOvalShape = new MenuItem("Oval shape", new EventHandler(OnOvalShape));
-			mnuShapes.MenuItems.Add(mnuOvalShape);
+			var mnuOvalShape = new ToolStripMenuItem("Oval shape",null,new EventHandler(OnOvalShape));
+			mnuShapes.Items.Add(mnuOvalShape);
 
-			MenuItem mnuDash2 = new MenuItem("-");
-			menu.MenuItems.Add(mnuDash2);
+			mnuShapesButton.DropDown = mnuShapes;
+			menu.Items.Add(mnuShapesButton);
 
-			MenuItem mnuTLShape = new MenuItem("Add Text label", new EventHandler(OnTextLabelShape));
-			menu.MenuItems.Add(mnuTLShape);
+			var mnuDash2 = new ToolStripMenuItem("-");
+			menu.Items.Add(mnuDash2);
+
+			var mnuTLShape = new ToolStripMenuItem("Add Text label",null,new EventHandler(OnTextLabelShape));
+			menu.Items.Add(mnuTLShape);
 
 
 			
